@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0" xmlns:m="http://ant.apache.org/ivy/maven">
+  <info organisation="org.jruby" module="jruby-core" revision="1.7.12" status="release" publication="20171209170826">
+    <description homepage=""/>
+  </info>
+  <configurations>
+    <conf name="default" visibility="public" description="runtime dependencies and master artifact can be used with this conf" extends="runtime,master"/>
+    <conf name="master" visibility="public" description="contains only the artifact published by this module itself, with no transitive dependencies"/>
+    <conf name="compile" visibility="public" description="this is the default scope, used if none is specified. Compile dependencies are available in all classpaths."/>
+    <conf name="provided" visibility="public" description="this is much like compile, but indicates you expect the JDK or a container to provide it. It is only available on the compilation classpath, and is not transitive."/>
+    <conf name="runtime" visibility="public" description="this scope indicates that the dependency is not required for compilation, but is for execution. It is in the runtime and test classpaths, but not the compile classpath." extends="compile"/>
+    <conf name="test" visibility="private" description="this scope indicates that the dependency is not required for normal use of the application, and is only available for the test compilation and execution phases." extends="runtime"/>
+    <conf name="system" visibility="public" description="this scope is similar to provided except that you have to provide the JAR which contains it explicitly. The artifact is always available and is not looked up in a repository."/>
+    <conf name="sources" visibility="public" description="this configuration contains the source artifact of this module, if any."/>
+    <conf name="javadoc" visibility="public" description="this configuration contains the javadoc artifact of this module, if any."/>
+    <conf name="optional" visibility="public" description="contains all optional dependencies"/>
+  </configurations>
+  <publications/>
+  <dependencies>
+    <dependency org="junit" name="junit" rev="4.11" force="true" conf="test-&gt;runtime(*),master(*)"/>
+    <dependency org="org.ow2.asm" name="asm" rev="4.0" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)"/>
+    <dependency org="org.ow2.asm" name="asm-commons" rev="4.0" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)"/>
+    <dependency org="org.ow2.asm" name="asm-analysis" rev="4.0" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)"/>
+    <dependency org="org.ow2.asm" name="asm-util" rev="4.0" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)"/>
+    <dependency org="org.jruby.joni" name="joni" rev="2.1.1" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)"/>
+    <dependency org="com.github.jnr" name="jnr-netdb" rev="1.1.2" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)"/>
+    <dependency org="com.github.jnr" name="jnr-enxio" rev="0.4" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)"/>
+    <dependency org="com.github.jnr" name="jnr-x86asm" rev="1.0.2" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)"/>
+    <dependency org="com.github.jnr" name="jnr-unixsocket" rev="0.3" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)"/>
+    <dependency org="com.github.jnr" name="jnr-posix" rev="3.0.1" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)"/>
+    <dependency org="org.jruby.extras" name="bytelist" rev="1.0.11" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)"/>
+    <dependency org="com.github.jnr" name="jnr-constants" rev="0.8.5" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)"/>
+    <dependency org="org.jruby.jcodings" name="jcodings" rev="1.0.10" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)"/>
+    <dependency org="com.github.jnr" name="jnr-ffi" rev="1.0.7" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)"/>
+    <dependency org="com.github.jnr" name="jffi" rev="1.2.7" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)"/>
+    <dependency org="com.github.jnr" name="jffi" rev="1.2.7" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)">
+      <artifact name="jffi" type="jar" ext="jar" conf="" m:classifier="native"/>
+    </dependency>
+    <dependency org="org.yaml" name="snakeyaml" rev="1.13" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)"/>
+    <dependency org="com.jcraft" name="jzlib" rev="1.1.2" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)"/>
+    <dependency org="com.headius" name="invokebinder" rev="1.2" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)"/>
+    <dependency org="org.osgi" name="org.osgi.core" rev="5.0.0" force="true" conf="provided-&gt;compile(*),provided(*),runtime(*),master(*)"/>
+    <dependency org="org.apache.ant" name="ant" rev="1.9.2" force="true" conf="provided-&gt;compile(*),provided(*),runtime(*),master(*)"/>
+    <dependency org="bsf" name="bsf" rev="2.4.0" force="true" conf="provided-&gt;compile(*),provided(*),runtime(*),master(*)"/>
+    <dependency org="com.martiansoftware" name="nailgun-server" rev="0.9.1" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)"/>
+    <dependency org="com.headius" name="coro-mock" rev="1.0" force="true" conf="provided-&gt;compile(*),provided(*),runtime(*),master(*)"/>
+    <dependency org="com.headius" name="unsafe-mock" rev="8.0" force="true" conf="provided-&gt;compile(*),provided(*),runtime(*),master(*)"/>
+    <dependency org="com.headius" name="jsr292-mock" rev="1.1" force="true" conf="provided-&gt;compile(*),provided(*),runtime(*),master(*)"/>
+    <dependency org="org.jruby" name="yecht" rev="1.0" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)"/>
+    <dependency org="org.jruby" name="joda-timezones" rev="2013d" force="true" conf="provided-&gt;compile(*),provided(*),runtime(*),master(*)"/>
+    <dependency org="joda-time" name="joda-time" rev="2.3" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)"/>
+    <dependency org="com.headius" name="options" rev="1.1" force="true" conf="compile-&gt;compile(*),master(*);runtime-&gt;runtime(*)"/>
+  </dependencies>
+</ivy-module>
